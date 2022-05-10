@@ -75,11 +75,13 @@ const Keyboard = {
     },
 
     setListener() { 
-        this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");  
+        this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
+        this.elements.lkeys = this.elements.keysContainer.querySelectorAll(".keyboard__key--letter");
+        var th = this;  
         window.onkeydown = function(e){
             //textarea.focus();
             e.preventDefault();            
-            Keyboard.elements.keys.forEach(function(key){
+            th.elements.keys.forEach(function(key){
                 if(key.getAttribute("code") == e.code){                     
                     key.click();
                     key.classList.add("keyboard__key--active");
@@ -87,8 +89,8 @@ const Keyboard = {
             });               
         };
 
-        window.onkeyup = function(e) {
-            Keyboard.elements.keys.forEach(function(key){
+        window.onkeyup = function(e) {            
+            th.elements.keys.forEach(function(key){
                 if(key.getAttribute("code") == e.code){                    
                     key.classList.remove("keyboard__key--active");
                 }
@@ -253,7 +255,7 @@ const Keyboard = {
         }
     },
 
-    _toggleCapsLock() {
+    _toggleCapsLock() {        
         this.properties.capsLock = !this.properties.capsLock;
 
         for (const key of this.elements.lkeys) {
@@ -273,11 +275,15 @@ const Keyboard = {
     
 };
 var storage = window.localStorage;
-const message = document.createElement("p");
+var message = document.createElement("p");
+message.textContent = "Windows";
+document.body.appendChild(message);
+message = document.createElement("p");
 message.textContent = "Use left shift + left ctrl to change layout";
+document.body.appendChild(message);
 const textarea = document.createElement("textarea");
 textarea.classList.add("use-keyboard-input");
-document.body.appendChild(message);
+
 document.body.appendChild(textarea);
 
 window.addEventListener("DOMContentLoaded", function () {
