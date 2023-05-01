@@ -4,7 +4,6 @@
     bottom: 10%;*/ 
     width: 900px;
     margin: 100px auto;
-
     padding: 5px 0;
     background: #dfdfdf;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
@@ -39,14 +38,15 @@
     padding: 0;
     -webkit-tap-highlight-color: transparent;
     position: relative;
+    transition: 0.3s;
 }
 
 .keyboard__key:active {
-    background-color: #b7e4f3;
+    background-color: #b7e4f3;    
 }
 
 .keyboard__key--active {
-    background-color: #b7e4f3;
+    background-color: #b7e4f3;    
 }
 
 .keyboard__key--wide {
